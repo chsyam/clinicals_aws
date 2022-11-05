@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/clinicals.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Patients : </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patient_list %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.lastName }}</td>
+                <td>{{ patient.age }}</td>
+                <td><a href="/update/{{patient.id}}">Update</a></td>
+                <td><a href="/delete/{{patient.id}}">Delete</a></td>
+                <td><a href="/addData/{{patient.id}}">Add Data</a></td>
+                <td><a href="/analyze/{{patient.id}}">Analyze</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="create/">Create a Patient</a>
+</body>
+</html>
